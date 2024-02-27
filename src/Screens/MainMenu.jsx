@@ -22,14 +22,18 @@ const MenuOption = styled.div`
 
 const TaskTitle = "Main Menu";
 const Desc = `Please choose the task you would like to perform:`;
-function MainMenu({ startEssay, startVideo }) {
+function MainMenu({ startEssay, startVideo, startMath }) {
   return (
     <Container>
       <TitleDiv>{TaskTitle}</TitleDiv>
       <TaskDescDiv>{Desc}</TaskDescDiv>
       <TaskContentDiv>
         <MenuOption onClick={() => startEssay()}>
-          Essay Writing Experiement
+          Essay Writing Experiment
+        </MenuOption>
+        <br />
+        <MenuOption onClick={() => startMath()}>
+          Math Experiment
         </MenuOption>
         <br />
         <MenuOption onClick={() => startVideo()}>

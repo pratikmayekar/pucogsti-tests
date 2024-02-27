@@ -25,6 +25,7 @@ const StyledEssay = styled.textarea`
   width: 100%;
   height: 70%;
   margin-top: 30px;
+  font-size: 14px;
 `;
 
 const TaskTitle = "Experiment: Essay Writing";

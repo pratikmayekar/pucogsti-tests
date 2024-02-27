@@ -5,6 +5,7 @@ import StartPage from "./Screens/StartPage";
 import { PlusScreenDuration } from "./common/Config";
 import MainMenu from "./Screens/MainMenu";
 import MusicVideo from "./Screens/MusicVideo";
+import MathTask from "./Screens/MathTask";
 
 function App() {
   const [page, setPage] = useState("Main");
@@ -25,6 +26,10 @@ function App() {
     setTask("Video");
     setPage("Start");
   };
+  const startMath = () => {
+    setTask("Math");
+    setPage("Start");
+  };
 
   const renderComponent = () => {
     switch (page) {
@@ -34,6 +39,8 @@ function App() {
         return <Plus></Plus>;
       case "Essay":
         return <EssayWriting></EssayWriting>;
+      case "Math":
+        return <MathTask></MathTask>;
       case "Video":
         return <MusicVideo></MusicVideo>;
       case "Main":
@@ -41,6 +48,7 @@ function App() {
           <MainMenu
             startEssay={() => startEssay()}
             startVideo={() => startVideo()}
+            startMath={() => startMath()}
           ></MainMenu>
         );
     }

@@ -7,14 +7,18 @@
 /**
  * ACTUAL DURATIONS - Uncomment before running experiment
  */
-// export const PlusScreenDuration = 40 * 1000;
-// export const EssayDuration = 7.5 * 60 * 1000;
+export const PlusScreenDuration = 40 * 1000;
+export const EssayDuration = 7.5 * 60 * 1000;
+export const MathDuration = 7.5 * 60 * 1000;
+export const MathCorrectDuration = 1 * 1000;
 
 /**
  * TEST DURATIONS - Comment before running experiment
  */
-export const PlusScreenDuration = 2 * 1000; // test
-export const EssayDuration = 2 * 1000; // test
+// export const PlusScreenDuration = 2 * 1000; // test
+// export const EssayDuration = 2 * 1000; // test
+// export const MathDuration = 1 * 60 * 1000; // test
+// export const MathCorrectDuration = 1 * 1000; // test
 
 export const CommonInstructions = `
 1. Go to the tobii eye tracker and caliberate your eyes to create a new eye profile
@@ -31,5 +35,7 @@ export const EssayTopics = [
   "The impact of technology on classroom learning.",
   "What makes some people introverted or extroverted? What kind are you more compatible with and why?",
 ];
+
+export const MathOperandRange = 15;
 
 export const MusicVideoURL = "https://www.youtube.com/embed/n3EiRynr1Us?si=EgLp9izF3K5CuQev&amp;controls=0";
