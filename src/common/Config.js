@@ -36,6 +36,8 @@ export const EssayTopics = [
   "What makes some people introverted or extroverted? What kind are you more compatible with and why?",
 ];
 
-export const MathOperandRange = 15;
+export const MathOperandMax = 16;
+export const MathOperandMin = 1;
+export const MathHardOperandMin = 11;
 
 export const MusicVideoURL = "https://www.youtube.com/embed/n3EiRynr1Us?si=EgLp9izF3K5CuQev&amp;controls=0";

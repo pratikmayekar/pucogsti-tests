@@ -3,7 +3,9 @@ import styled from "styled-components";
 import {
   MathCorrectDuration,
   MathDuration,
-  MathOperandRange,
+  MathHardOperandMin,
+  MathOperandMax,
+  MathOperandMin,
 } from "../common/Config";
 
 const Container = styled.div`
@@ -51,7 +53,7 @@ const TaskTitle = "Experiment: Math";
 const Duration = "Duration: 7 mins";
 const TaskDesc =
   "This activity has been designed to activate the numerical/logical reasoning parts of your brain.";
-const MathOperations = ["+", "-", "*"];
+const MathOperations = ["+", "*", "-"];
 
 function MathTask() {
   const [disabled, setDisabled] = useState(false);
@@ -81,9 +83,25 @@ function MathTask() {
   const setNewProblem = () => {
     setCheckVal(null);
     setAnswerVal("");
-    let op1 = Math.floor(Math.random() * MathOperandRange);
-    let op2 = Math.floor(Math.random() * MathOperandRange);
-    let operation = Math.floor(Math.random() * MathOperations.length);
+    let op1, op2, operation;
+
+    let probType = Math.random() < 0.3;
+    
+    const randomIntFromInterval = (min, max) => { // min and max included 
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }    
+
+    if(probType) {
+      op1 = randomIntFromInterval(MathOperandMin, MathOperandMax);
+      op2 = randomIntFromInterval(MathOperandMin, MathOperandMax);
+      operation = Math.floor(Math.random() * MathOperations.length);
+    }
+    else {
+      op1 = randomIntFromInterval(MathHardOperandMin, MathOperandMax);
+      op2 = randomIntFromInterval(MathHardOperandMin, MathOperandMax);
+      operation = Math.floor(Math.random() * (MathOperations.length - 1)); // exclude subtraction
+    }
+
     setCurrOperation(operation);
     switch (operation) {
       case 0:
@@ -92,6 +110,11 @@ function MathTask() {
         setCorrectAnswer(op1 + op2);
         break;
       case 1:
+        setOperand1(op1);
+        setOperand2(op2);
+        setCorrectAnswer(op1 * op2);
+        break;
+      case 2:
         if (op1 >= op2) {
           setOperand1(op1);
           setOperand2(op2);
@@ -101,11 +124,6 @@ function MathTask() {
           setOperand2(op1);
           setCorrectAnswer(op2 - op1);
         }
-        break;
-      case 2:
-        setOperand1(op1);
-        setOperand2(op2);
-        setCorrectAnswer(op1 * op2);
         break;
     }
   };
