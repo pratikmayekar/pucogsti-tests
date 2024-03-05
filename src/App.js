@@ -2,25 +2,38 @@ import { useState } from "react";
 import Plus from "./common/Plus";
 import EssayWriting from "./Screens/EssayWriting";
 import StartPage from "./Screens/StartPage";
-import { PlusScreenDuration } from "./common/Config";
+import {
+  AutomaticEyeTrackerRecording,
+  PlusScreenDuration,
+} from "./common/Config";
 import MainMenu from "./Screens/MainMenu";
 import MusicVideo from "./Screens/MusicVideo";
 import MathTask from "./Screens/MathTask";
+import {
+  triggerStartRecording,
+  triggerStopRecording,
+} from "./common/TobiiRequests";
 
 function App() {
   const [page, setPage] = useState("Main");
   const [task, setTask] = useState("");
 
   const runTask = () => {
+    if (AutomaticEyeTrackerRecording) {
+      triggerStartRecording();
+    }
     setPage("Plus");
     setTimeout(() => {
       setPage(task);
     }, PlusScreenDuration);
   };
   const endTask = () => {
+    if (AutomaticEyeTrackerRecording) {
+      triggerStopRecording();
+    }
     setPage("Main");
     setTask("");
-  }
+  };
 
   const startEssay = () => {
     setTask("Essay");

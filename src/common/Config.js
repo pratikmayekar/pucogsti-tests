@@ -44,3 +44,8 @@ export const MathOperandMin = 1;
 export const MathHardOperandMin = 11;
 
 export const MusicVideoURL = "https://www.youtube.com/embed/n3EiRynr1Us?si=EgLp9izF3K5CuQev&amp;controls=0";
+
+/**
+ * Enable/disable Tobii Pro eye tracker recording functionality
+ */
+export const AutomaticEyeTrackerRecording = true;
