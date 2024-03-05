@@ -17,6 +17,10 @@ function App() {
       setPage(task);
     }, PlusScreenDuration);
   };
+  const endTask = () => {
+    setPage("Main");
+    setTask("");
+  }
 
   const startEssay = () => {
     setTask("Essay");
@@ -38,11 +42,11 @@ function App() {
       case "Plus":
         return <Plus></Plus>;
       case "Essay":
-        return <EssayWriting></EssayWriting>;
+        return <EssayWriting endTask={() => endTask()}></EssayWriting>;
       case "Math":
-        return <MathTask></MathTask>;
+        return <MathTask endTask={() => endTask()}></MathTask>;
       case "Video":
-        return <MusicVideo></MusicVideo>;
+        return <MusicVideo endTask={() => endTask()}></MusicVideo>;
       case "Main":
         return (
           <MainMenu

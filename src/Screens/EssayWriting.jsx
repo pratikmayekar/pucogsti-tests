@@ -18,12 +18,19 @@ const TaskDescDiv = styled.div`
   vertical-align: middle;
 `;
 const TaskContentDiv = styled.div`
-  flex-grow: 1;
-  width: 60vw;
+  width: 50vw;
+  height: 60vh;
+`;
+const EndButtonDiv = styled.div`
+  width: 50vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const StyledEssay = styled.textarea`
   width: 100%;
-  height: 70%;
+  height: calc(100% - 50px);
   margin-top: 30px;
   font-size: 14px;
 `;
@@ -34,7 +41,7 @@ const TaskDesc = "This activity has been designed to activate the language inten
 
 const Topic = `Topic: ${EssayTopics[Math.floor(Math.random() * EssayTopics.length)]}`;
 
-function EssayWriting() {
+function EssayWriting({endTask}) {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
@@ -57,6 +64,9 @@ function EssayWriting() {
       <TaskContentDiv>
         <StyledEssay disabled={disabled}></StyledEssay>
       </TaskContentDiv>
+      <EndButtonDiv>
+        <button style={{display: disabled ? 'inline-block' : 'none'}} onClick={() => endTask()}>End Experiment</button>
+      </EndButtonDiv>
     </Container>
   );
 }

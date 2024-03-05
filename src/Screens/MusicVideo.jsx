@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { MusicVideoURL } from "../common/Config";
+import { MusicVideoURL, VideoDuration } from "../common/Config";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   height: 100vh;
@@ -18,12 +19,19 @@ const TaskDescDiv = styled.div`
   width: 60vw;
 `;
 const TaskContentDiv = styled.div`
-  flex-grow: 1;
   width: 60vw;
+  height: 60vh;
 `;
-const StyledEssay = styled.div`
+const EndButtonDiv = styled.div`
+  width: 50vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const VideoDiv = styled.div`
   width: 100%;
-  height: 80%;
+  height: calc(100% - 50px);
   margin-top: 30px;
 `;
 
@@ -33,13 +41,21 @@ const TaskDesc = `
     Sit back and enjoy this live orchestra performance of Beethoven's Symphony No. 5.
     `;
 
-function MusicVideo() {
+function MusicVideo({endTask}) {
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDisabled(true);
+    }, VideoDuration);
+  }, []);
+  
   return (
     <Container>
       <TitleDiv>{TaskTitle}</TitleDiv>
       <TaskDescDiv>{TaskDesc}</TaskDescDiv>
       <TaskContentDiv>
-        <StyledEssay>
+        <VideoDiv>
           <iframe
             width="100%"
             height="100%"
@@ -49,8 +65,11 @@ function MusicVideo() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
-        </StyledEssay>
+        </VideoDiv>
       </TaskContentDiv>
+      <EndButtonDiv>
+        <button style={{display: disabled ? 'inline-block' : 'none'}} onClick={() => endTask()}>End Experiment</button>
+      </EndButtonDiv>
     </Container>
   );
 }

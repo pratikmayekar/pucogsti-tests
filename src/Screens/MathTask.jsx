@@ -30,6 +30,13 @@ const TaskContentDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const EndButtonDiv = styled.div`
+  width: 60vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const MathDiv = styled.div`
   margin-top: 30px;
   font-size: 50px;
@@ -55,7 +62,7 @@ const TaskDesc =
   "This activity has been designed to activate the numerical/logical reasoning parts of your brain.";
 const MathOperations = ["+", "*", "-"];
 
-function MathTask() {
+function MathTask({endTask}) {
   const [disabled, setDisabled] = useState(false);
   const [answerVal, setAnswerVal] = useState("");
   const [operand1, setOperand1] = useState();
@@ -165,6 +172,9 @@ function MathTask() {
           )}
         </CheckDiv>
       </TaskContentDiv>
+      <EndButtonDiv>
+        <button style={{display: disabled ? 'inline-block' : 'none'}} onClick={() => endTask()}>End Experiment</button>
+      </EndButtonDiv>
     </Container>
   );
 }

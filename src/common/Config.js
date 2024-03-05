@@ -11,14 +11,17 @@ export const PlusScreenDuration = 40 * 1000;
 export const EssayDuration = 7.5 * 60 * 1000;
 export const MathDuration = 7.5 * 60 * 1000;
 export const MathCorrectDuration = 1 * 1000;
+export const VideoDuration = 6.75 * 60 * 1000;
 
 /**
  * TEST DURATIONS - Comment before running experiment
- */
+*/
 // export const PlusScreenDuration = 2 * 1000; // test
 // export const EssayDuration = 2 * 1000; // test
 // export const MathDuration = 1 * 60 * 1000; // test
 // export const MathCorrectDuration = 1 * 1000; // test
+// // export const VideoDuration = 6.75 * 60 * 1000; // test
+// export const VideoDuration = 2 * 1000; // test
 
 export const CommonInstructions = `
 1. Go to the tobii eye tracker and caliberate your eyes to create a new eye profile
